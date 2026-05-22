@@ -1,0 +1,10 @@
+package: api
+generate:
+  models: true
+  gin-server: true
+output: internal/api/server.gen.go
+---
+package: api
+generate:
+  client: true
+output: internal/api/client.go 

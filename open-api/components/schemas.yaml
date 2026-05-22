@@ -1,0 +1,74 @@
+schemas:
+  HealthResponse:
+    type: object
+    properties:
+      status:
+        type: string
+        example: ok
+      uptime_seconds:
+        type: number
+        format: double
+
+  AuthRequest:
+    type: object
+    required: [username, password]
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+
+  AuthResponse:
+    type: object
+    properties:
+      token:
+        type: string
+      expires_in:
+        type: integer
+        example: 3600
+
+  Deployment:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      version:
+        type: string
+      status:
+        type: string
+        enum: [pending, running, failed, succeeded]
+      created_at:
+        type: string
+        format: date-time
+
+  CreateDeploymentRequest:
+    type: object
+    required: [name, version]
+    properties:
+      name:
+        type: string
+      version:
+        type: string
+      config:
+        type: object
+        additionalProperties: true
+
+  DeploymentList:
+    type: object
+    properties:
+      total:
+        type: integer
+      items:
+        type: array
+        items:
+          $ref: '#/schemas/Deployment'
+
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+      message:
+        type: string

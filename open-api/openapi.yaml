@@ -1,0 +1,14 @@
+openapi: 3.0.3
+info:
+  title: Deploy Agent API
+  version: 0.1.0
+  description: API for managing deployments and health checks
+servers:
+  - url: http://localhost:8080
+paths:
+  $ref: './paths/paths.yaml#/paths'
+
+components:
+  schemas:
+    $ref: './components/schemas.yaml#/schemas'
+

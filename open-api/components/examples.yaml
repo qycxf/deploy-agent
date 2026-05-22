@@ -1,0 +1,17 @@
+examples:
+  AuthRequestExample:
+    summary: Example login payload
+    value:
+      username: demo
+      password: secret
+
+  CreateDeploymentExample:
+    summary: Example create deployment payload
+    value:
+      name: example-service
+      version: v1.2.3
+      config:
+        replicas: 3
+        env:
+          - name: LOG_LEVEL
+            value: info

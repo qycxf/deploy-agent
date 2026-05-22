@@ -1,3 +1,18 @@
+# Binaries
+/bin/
+
+# Vendor
+/vendor/
+
+# OS files
+.DS_Store
+
+# Go
+*.test
+coverage.out
+
+# IDE
+.vscode/
 bin/
 *.exe
 *.dll
