@@ -63,7 +63,7 @@ schemas:
       items:
         type: array
         items:
-          $ref: '#/schemas/Deployment'
+          $ref: '#/components/schemas/Deployment'
 
   Error:
     type: object

@@ -1,0 +1,6 @@
+##config for oapi-codegen
+package: api
+output: internal/api/server.gen.go
+generate:
+  gin-server: true
+  models: true

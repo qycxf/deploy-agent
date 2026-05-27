@@ -1,36 +1,45 @@
 # deploy-agent
 
-基础项目脚手架。
+基础项目脚手架，使用 OpenAPI 作为接口契约。
 
-快速开始：
+## 目录说明
 
-运行开发服务器：
+- `open-api/`：OpenAPI 源文件、组件和路径拆分
+- `internal/api/`：OpenAPI 生成的 HTTP 路由与类型
+- `internal/model/`：独立生成的模型定义
+- `internal/server/`：服务启动与 OpenAPI 适配层
+
+## 常用命令
+
+### 生成 OpenAPI bundle
 ```bash
-go run ./cmd/server
+make bundle
 ```
 
-生成（占位）：
+### 生成代码
 ```bash
-make gen
+make generate
 ```
 
-构建二进制：
+### 启动服务
+```bash
+go run . server
+```
+
+### 构建二进制
 ```bash
 make build
 ```
-# Go Project
 
-这是一个示例 Go 项目，包含一个简单的 HTTP 服务。
-
-运行：
-
-```
-cd deploy-agent
-go run .
+### 运行测试
+```bash
+make test
 ```
 
-构建：
+## 说明
 
-```
-go build -o bin/app
-```
+当前项目采用的是 OpenAPI-first 的 Go 服务结构：
+- `open-api/` 维护契约
+- `oapi-codegen` 生成接口和数据模型
+- `internal/server/` 实现业务处理并挂载生成的路由
+- `cmd/` 提供 CLI 入口
