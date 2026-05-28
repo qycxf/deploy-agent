@@ -6,6 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/qycxf/deploy-agent/internal/api"
+	"github.com/qycxf/deploy-agent/internal/repository"
 )
 
 type memoryStore struct {
@@ -31,11 +32,11 @@ type OpenAPIHandler struct {
 	metrics *metricsHandler
 }
 
-func NewOpenAPIHandler() *OpenAPIHandler {
+func NewOpenAPIHandler(userRepo *repository.UserRepository) *OpenAPIHandler {
 	store := newMemoryStore()
 	return &OpenAPIHandler{
 		store:   store,
-		auth:    &authHandler{store: store},
+		auth:    &authHandler{userRepo: userRepo},
 		service: &serviceHandler{store: store},
 		env:     &envHandler{store: store},
 		metrics: &metricsHandler{},
