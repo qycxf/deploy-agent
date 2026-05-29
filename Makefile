@@ -1,7 +1,7 @@
 MODULE_NAME=github.com/qycxf/deploy-agent
 BINARY=deploy-agent
 
-.PHONY: all gen build run tidy fmt test docker-build bundle validate gen-oapi gen-openapi
+.PHONY: all gen build run tidy fmt test docker-build bundle validate gen-oapi gen-openapi migrate
 
 all: build
 
@@ -63,6 +63,10 @@ run:
 
 test:
 	go test ./...
+
+migrate:
+	@echo "🚀 applying database migrations..."
+	go run ./internal/db/migrate
 
 docker-build:
 	docker build -t $(BINARY):latest .

@@ -1,0 +1,12 @@
+# Example configuration file.
+# You can mount/override this in Kubernetes (ConfigMap/Secret).
+#
+# The app will use these values to build PostgreSQL DSN if DATABASE_URL is not set.
+
+database:
+  host: "192.168.2.104"
+  port: "5432"
+  user: "postgres"
+  password: "cyhh@123"
+  dbname: "deploy_agent"
+  sslmode: "disable"
